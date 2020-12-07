@@ -14,6 +14,27 @@ class Withdraw extends StatefulWidget {
 }
 
 class _WithdrawState extends State<Withdraw> {
+  createAlertDialog(BuildContext context) {
+    TextEditingController customController = TextEditingController();
+
+    return showDialog(context: context, builder: (context){
+      return AlertDialog(
+        title: Text('Enter Amount'),
+        content: TextField(
+          controller: customController,
+        ),
+        actions: [
+          MaterialButton(
+            elevation: 5.0,
+            child: Text('Confirm'),
+            onPressed: () {
+              Navigator.of(context).pop(customController.text.toString());
+            },
+          )
+        ],
+      );
+    });
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -91,7 +112,7 @@ class _WithdrawState extends State<Withdraw> {
                   width: 150.0,
                   child: GestureDetector(
                     onTap: () {
-                      print("tapped");
+                      createAlertDialog(context);
                     },
                     child: Card(
                       shape: RoundedRectangleBorder(
@@ -100,26 +121,22 @@ class _WithdrawState extends State<Withdraw> {
                       color: Color(0xffBBD2D3),
                       elevation: 4.0,
                       child: Padding(
-                        padding: EdgeInsets.only(left: 15.0,  top: 20.0),
+                        padding: EdgeInsets.only(left: 10.0,  top: 20.0),
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            CircleAvatar(
-                              radius: 22,
-                              backgroundColor: Colors.white,
-                              child: IconButton(
-                                icon: Icon(
-                                  Icons.payment,
-                                  size: 25,
-                                  color: Color(0xff3F62D7),
-                                ),
-                                onPressed: () {
-                                },
+                            ClipRRect(
+                              borderRadius: BorderRadius.circular(20.0),//or 15.0
+                              child: Container(
+                                height: 70.0,
+                                width: 70.0,
+                                color: Color(0xffed1b24),
+                                child: Image(image: new AssetImage("assets/airtel.jpg"),),
                               ),
                             ),
                             SizedBox(height: 5,),
                             Text(
-                              'Payments',
+                              'Airtel',
                               style: TextStyle(
                                   color: Color(0xff001E3B),
                                   fontFamily: 'Montserrat',
@@ -129,7 +146,7 @@ class _WithdrawState extends State<Withdraw> {
                             ),
                             SizedBox(height: 2,),
                             Text(
-                              'Product(s) Payments',
+                              'Airtel from Kshs.10',
                               style: TextStyle(
                                 fontFamily: 'Montserrat',
                                 color: Color(0xff6494A0),
@@ -147,7 +164,7 @@ class _WithdrawState extends State<Withdraw> {
                   width: 150.0,
                   child: GestureDetector(
                     onTap: () {
-                      print("tapped");
+                      createAlertDialog(context);
                     },
                     child: Card(
                       shape: RoundedRectangleBorder(
@@ -156,26 +173,22 @@ class _WithdrawState extends State<Withdraw> {
                       color: Color(0xffFFE6D7),
                       elevation: 4.0,
                       child: Padding(
-                        padding: EdgeInsets.only(left: 15.0,  top: 20.0),
+                        padding: EdgeInsets.only(left: 10.0,  top: 20.0),
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            CircleAvatar(
-                              radius: 22,
-                              backgroundColor: Colors.white,
-                              child: IconButton(
-                                icon: Icon(
-                                  Icons.attach_money,
-                                  size: 25,
-                                  color: Color(0xffF2A813),
-                                ),
-                                onPressed: () {
-                                },
+                            ClipRRect(
+                              borderRadius: BorderRadius.circular(20.0),//or 15.0
+                              child: Container(
+                                height: 70.0,
+                                width: 70.0,
+                                color: Color(0xff0eb520),
+                                child: Image(image: new AssetImage("assets/mpesa.jpg"),),
                               ),
                             ),
                             SizedBox(height: 5,),
                             Text(
-                              'Deposit',
+                              'M-PESA',
                               style: TextStyle(
                                   fontFamily: 'Montserrat',
                                   color: Color(0xff676282),
@@ -185,7 +198,7 @@ class _WithdrawState extends State<Withdraw> {
                             ),
                             SizedBox(height: 2,),
                             Text(
-                              'Amount from Kshs.10',
+                              'Withdraw from Kshs.10',
                               style: TextStyle(
                                 fontFamily: 'Montserrat',
                                 color: Color(0xff9E7F6A),

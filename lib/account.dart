@@ -14,6 +14,27 @@ class Account extends StatefulWidget {
 }
 
 class _AccountState extends State<Account> {
+  createAlertDialog(BuildContext context) {
+    TextEditingController customController = TextEditingController();
+
+    return showDialog(context: context, builder: (context){
+      return AlertDialog(
+        title: Text('Enter Amount'),
+        content: TextField(
+          controller: customController,
+        ),
+        actions: [
+          MaterialButton(
+            elevation: 5.0,
+            child: Text('Confirm'),
+            onPressed: () {
+              Navigator.of(context).pop(customController.text.toString());
+            },
+          )
+        ],
+      );
+    });
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -91,7 +112,7 @@ class _AccountState extends State<Account> {
                   width: 150.0,
                   child: GestureDetector(
                     onTap: () {
-                      print("tapped");
+                   createAlertDialog(context);
                     },
                     child: Card(
                       shape: RoundedRectangleBorder(
@@ -147,7 +168,7 @@ class _AccountState extends State<Account> {
                   width: 150.0,
                   child: GestureDetector(
                     onTap: () {
-                      print("tapped");
+                      createAlertDialog(context);
                     },
                     child: Card(
                       shape: RoundedRectangleBorder(
